@@ -47,7 +47,6 @@ public class IntegrationImpl implements Integration {
 				.setParameter(DEVELOPER_ID, Main.DEVELOPER_ID).setParameter(ITEM_ID, itemId).build();
             CloseableHttpResponse response = httpClient.executeRequest(postBuyUri, HttpMethods.POST);
             String jsonResponse = EntityUtils.toString(response.getEntity());
-            LOG.info(jsonResponse);
             logResponseStatus("Buy: ", response);
             return gsonCreator.createGsonBuilder().fromJson(jsonResponse, Purchase.class);
         } catch (URISyntaxException | IOException e) {
